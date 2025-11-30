@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using FluentValidation.Results;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Text.Json.Serialization;
 
 namespace Arkitektur.Business.Base
 {
@@ -19,12 +21,23 @@ namespace Arkitektur.Business.Base
         }
         public static BaseResult<T> Success()
         {
-            return new BaseResult<T> {Errors=null};
+            return new BaseResult<T> { Errors = null };
         }
 
         public static BaseResult<T> Fail(string errorMessage)
         {
             return new BaseResult<T> { Errors = new[] { new { ErrorMessage = errorMessage } } };
+        }
+
+        public static BaseResult<T> Fail(List<ValidationFailure> errorMessage)
+        {
+            IEnumerable<object> errors = (from error in errorMessage
+                                          select new
+                                          {
+                                              PropertyName = error.PropertyName,
+                                              ErrorMessage = error.ErrorMessage
+                                          }).ToList();
+            return new BaseResult<T> { Errors = errors };
         }
     }
 }

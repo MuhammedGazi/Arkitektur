@@ -1,11 +1,4 @@
-﻿using Arkitektur.Business.DTOs.AboutDtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Arkitektur.Business.DTOs.AboutDtos
+﻿namespace Arkitektur.Business.DTOs.AboutDtos
 {
     public class CreateAboutDto
     {
