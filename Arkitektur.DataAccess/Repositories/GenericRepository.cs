@@ -23,7 +23,7 @@ namespace Arkitektur.DataAccess.Repositories
 
         public async Task<TEntity> GetByIdAsync(int id)
         {
-            return await _table.FindAsync();
+            return await _table.FindAsync(id);
         }
 
         public IQueryable<TEntity> GetQueryable()

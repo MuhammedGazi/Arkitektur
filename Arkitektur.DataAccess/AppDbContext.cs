@@ -5,13 +5,13 @@ using System.Linq.Expressions;
 
 namespace Arkitektur.DataAccess
 {
-    public class AppDbContext(DbContextOptions options): DbContext(options)
+    public class AppDbContext(DbContextOptions options) : DbContext(options)
     {
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            foreach(var entityType in modelBuilder.Model.GetEntityTypes())
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 if (typeof(BaseEntity).IsAssignableFrom(entityType.ClrType))
                 {
@@ -24,8 +24,8 @@ namespace Arkitektur.DataAccess
         {
             var parameter = Expression.Parameter(type, "e");
             var property = Expression.Property(Expression.Convert(parameter, typeof(BaseEntity)), "IsDeleted");
-            var notDeleted=Expression.Not(property);
-            return Expression.Lambda(notDeleted, parameter)
+            var notDeleted = Expression.Not(property);
+            return Expression.Lambda(notDeleted, parameter);
         }
 
         public DbSet<About> Abouts { get; set; }
