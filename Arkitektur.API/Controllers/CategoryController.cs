@@ -14,6 +14,14 @@ namespace Arkitektur.API.Controllers
             var response = await _categoryService.GetAllAsync();
             return response.IsSuccessful ? Ok(response) : BadRequest(response);
         }
+
+        [HttpGet("WithProjects")]
+        public async Task<ActionResult<List<ResultCategoryDto>>> GetCategoriesWithWithProjects()
+        {
+            var response = await _categoryService.GetCategoriesWithProjects();
+            return response.IsSuccessful ? Ok(response) : BadRequest(response);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ResultCategoryDto>> GetById(int id)
         {

@@ -1,10 +1,12 @@
 ﻿using Arkitektur.Business.Base;
 using Arkitektur.Business.DTOs.CategoryDtos;
+using Arkitektur.Business.DTOs.ProjectDtos;
 using Arkitektur.DataAccess.Repositories;
 using Arkitektur.DataAccess.UOW;
 using Arkitektur.Entity.Entities;
 using FluentValidation;
 using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 namespace Arkitektur.Business.Services.CategoryServices
 {
@@ -54,6 +56,13 @@ namespace Arkitektur.Business.Services.CategoryServices
             }
             var result = category.Adapt<ResultCategoryDto>();
             return BaseResult<ResultCategoryDto>.Success(result);
+        }
+
+        public async Task<BaseResult<List<ResultCategoriesWithProjectsDto>>> GetCategoriesWithProjects()
+        {
+            var categories = await _repository.GetQueryable().Include(x => x.Projects).ToListAsync();
+            var result = categories.Adapt<List<ResultCategoriesWithProjectsDto>>();
+            return BaseResult<List<ResultCategoriesWithProjectsDto>>.Success(result);
         }
 
         public async Task<BaseResult<object>> UpdateAsync(UpdateCategoryDto dto)
