@@ -17,7 +17,7 @@ namespace Arkitektur.Business.Valdiators
                 .EmailAddress().WithMessage("Lütfen geçerli bir email adresi giriniz.");
 
             RuleFor(x => x.PhoneNumber)
-                .NotEmpty().WithMessage("Telefon numarası boş bırakılamaz.")
+                .NotEmpty().WithMessage("Telefon numarası boş bırakılamaz.");
 
             RuleFor(x => x.ServiceName)
                 .NotEmpty().WithMessage("Lütfen bir hizmet seçiniz.")

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Arkitektur.Business.Base;
 
 namespace Arkitektur.Business.DTOs.CategoryDtos
 {
-    public class ResultCategoryDto
+    public class ResultCategoryDto : BaseDto
     {
+        public string CategoryName { get; set; }
     }
 }
