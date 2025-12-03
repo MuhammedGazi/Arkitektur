@@ -41,5 +41,6 @@ namespace Arkitektur.DataAccess
         public DbSet<TeamSocial> TeamSocials { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<UserMessage> userMessages { get; set; }
+        public DbSet<Choose> Chooses { get; set; }
     }
 }

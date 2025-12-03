@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Arkitektur.Business.Base;
 
 namespace Arkitektur.Business.DTOs.ChooseDtos
 {
-    public class ResultChooseDto
+    public class ResultChooseDto : BaseDto
     {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Icon { get; set; }
     }
 }

@@ -7,9 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.3.14" />
+    <PackageReference Include="AWSSDK.S3" Version="4.0.14" />
     <PackageReference Include="FluentValidation" Version="12.1.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.0" />
     <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
 
   <ItemGroup>
