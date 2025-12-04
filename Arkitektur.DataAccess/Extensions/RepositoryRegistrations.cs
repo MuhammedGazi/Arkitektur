@@ -1,6 +1,7 @@
 ﻿using Arkitektur.DataAccess.Interceptors;
 using Arkitektur.DataAccess.Repositories;
 using Arkitektur.DataAccess.UOW;
+using Arkitektur.Entity.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +18,11 @@ namespace Arkitektur.DataAccess.Extensions
 
                 options.AddInterceptors(new AuditDbContextInterceptor());
             });
+
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<AppDbContext>();
 
             services.Scan(opt =>
                           opt.FromAssemblyOf<DataAccessAssembly>()
