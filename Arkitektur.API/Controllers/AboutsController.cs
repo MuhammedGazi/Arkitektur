@@ -1,5 +1,6 @@
 ﻿using Arkitektur.Business.DTOs.AboutDtos;
 using Arkitektur.Business.Services.AboutServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Arkitektur.API.Controllers
